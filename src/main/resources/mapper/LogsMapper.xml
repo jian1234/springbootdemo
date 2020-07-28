@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootdemo.dao.LogsDao">
+
+<update id="insertLogs" parameterType="map">
+    merge into T_LOGS a using (select #{tablename} as tablename,#{dataid} as dataid from dual) b 
+    on (a.tablename = b.tablename and a.dataid = b.dataid) 
+    when matched then 
+    	update set a.error_data=#{error_data,jdbcType=VARCHAR},a.insert_date=sysdate 
+    when not matched then 
+	    insert (uuid,tablename,dataid,error_data,insert_date) 
+	    values(#{uuid,jdbcType=VARCHAR},#{tablename,jdbcType=VARCHAR},#{dataid,jdbcType=VARCHAR},#{error_data,jdbcType=VARCHAR},sysdate)
+</update> 
+
+</mapper>

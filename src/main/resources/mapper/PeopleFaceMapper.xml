@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.springbootdemo.dao.PeopleFaceDao">
+    <select id="GetpeoFace" parameterType="String" resultType="com.example.springbootdemo.model.PeopleFaceModel">
+		select * from T_FACEALARM where uuid = #{uuid}
+	</select>
+	
+    <select id="GetMainid" parameterType="String"  resultType="java.lang.String">
+    select UUID from T_FACEALARM where IS_TRANS =  0   <![CDATA[and rownum< #{num}]]> order by create_time 
+	</select>
+	
+    <select id="getNumAndSleeptime"   resultType="com.example.springbootdemo.model.NumAndSleeptimeModel">
+		select SLEEPTIME,NUM from front_machine where flag = '4'
+	</select>
+	
+	<update id="setSleepAndNum" parameterType="com.example.springbootdemo.model.NumAndSleeptimeModel">
+		UPDATE front_machine SET NUM = #{NUM}, SLEEPTIME = #{SLEEPTIME}  where FLAG = '4'
+	</update>
+	
+	<update id="StopScheduled" >
+		update front_machine set ISSTOP = '0' where flag = '4'  
+	</update>
+	
+	<update id="RestartScheduled">
+		update front_machine set ISSTOP = '1' where flag = '4'  
+	</update>
+	<update id="updateTRANS" parameterType="String">
+		update  T_FACEALARM set IS_TRANS = '1' where uuid = #{uuid}
+	</update>
+</mapper>

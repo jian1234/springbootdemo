@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootdemo.dao.RqjsDao">
+
+ <select id="getAlgorithm_rqjs" parameterType="int" resultType="map">
+	select * from(
+		select * from T_ALGORITHM_MAIN where is_trans='0' and flag_algorithm='2' and status='1')
+	 <![CDATA[where rownum<= #{num}]]>
+</select>
+
+<select id="getPeopleCount" parameterType="String" resultType="map">
+	select * from T_PEOPLECOUNT where is_trans='0' and main_id=#{main_id}
+</select>
+
+
+<select id="getNumsForPeopleCount" resultType="map">
+	select * from front_machine where uuid='1'
+</select>
+
+<update id="updatePeopleCount" parameterType="String">
+    update T_PEOPLECOUNT set is_trans='1' where uuid=#{rqjsid}
+</update> 
+
+</mapper>

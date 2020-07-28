@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootdemo.dao.RlsbDao">
+
+<select id="getNumsForRlsb" resultType="map">
+	select * from front_machine where uuid='4'
+</select>
+
+ <select id="getRlsbList" parameterType="int" resultType="map">
+	select * from(
+		select * from T_FACEALARM where is_trans='0')
+	 <![CDATA[where rownum<= #{num}]]>
+</select>
+
+<update id="updateForRlsb" parameterType="String">
+    update T_FACEALARM set is_trans='1' where uuid=#{rlsbid}
+</update> 
+
+</mapper>

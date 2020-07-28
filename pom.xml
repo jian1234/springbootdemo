@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.1.4.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.example</groupId>
+	<artifactId>springbootdemo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>springbootdemo</name>
+	<description>Demo project for Spring Boot</description>
+
+
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>jdk.tools</groupId>
+			<artifactId>jdk.tools</artifactId>
+			<version>1.8</version>
+			<scope>system</scope>
+			<!--suppress UnresolvedMavenProperty -->
+			<systemPath>${JAVA_HOME}/lib/tools.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- maven jar包下载网站给出版本为11.2.0.1.0 会报错无法找到该jar包 -->
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11.2.0.3</version>
+		</dependency>
+
+		<!-- 这里使用的是JPA包，也可使用JDBC包进行 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+            <groupId>cn.afterturn</groupId>
+            <artifactId>easypoi-base</artifactId>
+            <version>3.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.afterturn</groupId>
+            <artifactId>easypoi-web</artifactId>
+            <version>3.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.afterturn</groupId>
+            <artifactId>easypoi-annotation</artifactId>
+            <version>3.0.3</version>
+        </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+		<!--jsp页面使用jstl标签 -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		<!--用于编译jsp -->
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!-- mongodb -->
+		<!-- <dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-data-mongodb</artifactId>
+		    <version>2.1.7.RELEASE</version>
+		</dependency> -->
+		<!-- swagger -->
+		<dependency>
+		    <groupId>io.springfox</groupId>
+		    <artifactId>springfox-swagger2</artifactId>
+		    <version>2.7.0</version>
+		</dependency>
+		<!-- swagger ui -->
+		<dependency>
+		    <groupId>io.springfox</groupId>
+		    <artifactId>springfox-swagger-ui</artifactId>
+		    <version>2.7.0</version>
+		</dependency>
+		
+		<!-- 整合swagger2.9.2 swaggerui 2.9.2 出现的问题需解决guava的兼容性 -->
+		<dependency>
+		    <groupId>com.google.guava</groupId>
+		    <artifactId>guava</artifactId>
+		    <version>20.0</version>
+		</dependency>
+		<dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+        <!--json工具-->
+        
+      	<dependency>
+    		<groupId>com.alibaba</groupId>
+    		<artifactId>fastjson</artifactId>
+    		<version>1.2.47</version>
+		</dependency>
+		<!-- java连接hadoop -->
+		<dependency>
+    		<groupId>org.apache.hadoop</groupId>
+   			<artifactId>hadoop-client</artifactId>
+    		<version>2.6.0</version>
+		</dependency>
+		
+		<dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-hadoop-hbase</artifactId>
+            <version>2.5.0.RELEASE</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-hadoop</artifactId>
+            <version>2.5.0.RELEASE</version>
+        </dependency>
+
+		<dependency>
+    		<groupId>org.apache.hbase</groupId>
+   			<artifactId>hbase</artifactId>
+    		<version>1.0.0</version>
+    		<type>pom</type>
+		</dependency>
+		<!-- 升级版文本至1.3.0 解决 org.apache.hadoop.hbase.DoNotRetryIOException异常 -->
+		<dependency>
+    		<groupId>org.apache.hbase</groupId>
+    		<artifactId>hbase-client</artifactId>
+    		<version>1.3.0</version>
+		</dependency>
+		
+		<dependency>
+    		<groupId>org.apache.hadoop</groupId>
+    		<artifactId>hadoop-common</artifactId>
+   	 		<!-- <version>2.7.1</version> -->
+   	 		<version>2.6.0</version>
+		</dependency>
+
+		<!-- 文件上传支持 -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.3</version>
+		</dependency>
+
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>

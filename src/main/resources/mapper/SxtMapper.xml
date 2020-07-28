@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootdemo.dao.SxtDao">
+
+<select id="getNumsForSxt" resultType="map">
+	select * from front_machine where uuid='9'
+</select>
+
+ <select id="getSxtList" parameterType="int" resultType="map">
+	select * from(
+		select * from T_CAMERA where is_trans='0')
+	 <![CDATA[where rownum<= #{num}]]>
+</select>
+
+<update id="updateForSxt" parameterType="String">
+    update T_CAMERA set is_trans='1' where uuid=#{sxtid}
+</update> 
+
+</mapper>

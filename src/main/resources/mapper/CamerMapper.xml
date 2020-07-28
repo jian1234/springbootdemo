@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.springbootdemo.dao.CameraDao">
+    <select id="GetLinger"  resultType="com.example.springbootdemo.model.CameraModel">
+		select * from T_CAMERA 
+	</select>
+	
+	 <update id="UpdateCamera" parameterType="com.example.springbootdemo.model.CameraModel" >
+		update t_camera set is_trans = #{is_tran} where ID = #{ID}
+	</update> 
+</mapper>

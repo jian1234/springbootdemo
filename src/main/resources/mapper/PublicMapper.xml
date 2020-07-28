@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.springbootdemo.dao.PublicDao">
+    <select id="getPicAndVideoModel" parameterType="String" resultType="com.example.springbootdemo.model.PicAndVideoModel" >
+		select OUTPUTPATH,TABLENAME,COLUMNNAME,CAMERAID from t_algorithm_main al,t_monitorvideo mon where al.t_monitorvideo_id = mon.id  and al.uuid = #{main_id}
+	</select>
+	
+	<update id="updateTrans" parameterType="String" >
+		update t_algorithm_main set IS_TRANS = '1' where uuid = #{main_id} 
+	</update>
+	
+	<update  id="updateSchedule" parameterType="com.example.springbootdemo.model.NumAndSleeptimeModel" >
+		update front_machine set scheduledname = #{SCHEDULEDNAME} ,sleeptime = #{SLEEPTIME},isstop=#{ISSTOP},num=#{NUM} where uuid=#{uuid}
+	</update>
+    
+    <select id="getCron" parameterType="String" resultType="com.example.springbootdemo.model.ScheduledModel">
+    	select sleeptime,ISSTOP from front_machine where flag = #{flag} 
+    </select>
+    
+    <select id="initScheduledTable"  resultType="com.example.springbootdemo.model.ScheduledModel">
+    	select * from front_machine  
+    </select>
+    
+    <select id="selectScheduled"  resultType="com.example.springbootdemo.model.ScheduledModel">
+    	 select * from front_machine where uuid = #{selectScheduled}  
+    </select>
+    
+    <select id="GetComplete"  resultType="com.example.springbootdemo.model.CompleteModel">
+    	select (select count(*) from t_algorithm_main where STATUS = '1' and is_trans = '0') as peo_wwc,(select count(*) from t_algorithm_main where STATUS = '1' and is_trans = '1') as peo_wc,
+		(select count(*) from t_algorithm_main where STATUS = '2' and is_trans = '0') as lin_wwc,(select count(*) from t_algorithm_main where STATUS = '2' and is_trans = '1') as lin_wc,
+		(select count(*) from t_algorithm_main where STATUS = '3' and is_trans = '0') as rem_wwc,(select count(*) from t_algorithm_main where STATUS = '3' and is_trans = '1') as rem_wc,
+		(select count(*) from t_facealarm where is_trans='0') as face_wwc,(select count(*) from t_facealarm where is_trans='0') as face_wc
+		from dual
+    </select>
+	
+	
+</mapper>

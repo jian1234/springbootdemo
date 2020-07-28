@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootdemo.dao.PeopleCountDao">
+    <select id="GetGroupEventEarl" parameterType="String" resultType="com.example.springbootdemo.model.PeopleModel">
+		select uuid,MAIN_ID,PEOPLE_COUNT,FRAME,KEY_HBASE,CSRA_COUNT,CSRB_COUNT,SEG_COUNT,CREATE_TIME from t_peoplecount where main_id = #{main_id}
+	</select>
+	
+    <select id="GetMainid" parameterType="String"  resultType="java.lang.String">
+		select UUID from T_ALGORITHM_MAIN where IS_TRANS =  0 and STATUS = '1'  and FLAG_ALGORITHM = '2'  and uuid = '118D1EF63FBD4C83AE9C342A72C2D3A2' <![CDATA[and rownum< #{num}]]>  order by CREATE_TIME
+	</select>
+	
+	 <select id="getNumAndSleeptime"   resultType="com.example.springbootdemo.model.NumAndSleeptimeModel">
+		select SLEEPTIME,NUM from front_machine where flag = '1'
+	</select>
+	
+	<update id="setSleepAndNum" parameterType="com.example.springbootdemo.model.NumAndSleeptimeModel">
+		UPDATE front_machine SET NUM = #{NUM} , SLEEPTIME = #{SLEEPTIME}  where FLAG = '1'
+	</update>
+	
+	<update id="StopScheduled" >
+		update front_machine set ISSTOP = '0' where flag = '1'
+	</update>
+	
+	<update id="RestartScheduled">
+		update front_machine set ISSTOP = '1' where flag = '1'  
+	</update>
+</mapper>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootdemo.dao.TfDao">
+
+ <select id="getAlgorithm_Tf" parameterType="int" resultType="map">
+	select * from(
+		select * from T_ALGORITHM_MAIN where is_trans='0' and flag_algorithm='2' and status='6')
+	 <![CDATA[where rownum<= #{num}]]>
+</select>
+
+<select id="PeopleOther" parameterType="String" resultType="map">
+	select * from T_PEOPLEOTHER where is_trans='0' and main_id=#{main_id}
+</select>
+
+
+<select id="getNumsForPeopleOther" resultType="map">
+	select * from front_machine where uuid='8'
+</select>
+
+<update id="updatePeopleOther" parameterType="String">
+    update T_PEOPLEOTHER set is_trans='1' where uuid=#{tfid}
+</update>
+
+</mapper>
