@@ -158,7 +158,7 @@
 		<dependency>
     		<groupId>org.apache.hbase</groupId>
    			<artifactId>hbase</artifactId>
-    		<version>1.0.0</version>
+    		<version>1.0.1.1</version>
     		<type>pom</type>
 		</dependency>
 		<!-- 升级版文本至1.3.0 解决 org.apache.hadoop.hbase.DoNotRetryIOException异常 -->
